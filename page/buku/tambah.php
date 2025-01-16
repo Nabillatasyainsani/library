@@ -1,46 +1,39 @@
 <div class="panel panel-default">
     <div class="panel-heading">
         Tambah Data
-    </div> 
+    </div>
     <div class="panel-body">
         <div class="row">
             <div class="col-md-12">
                 <form method="POST">
                     <div class="form-group">
                         <label>Judul</label>
-                        <input class="form-control" name="judul" required maxlength="500"/>
+                        <input class="form-control" name="judul" required maxlength="500" />
                     </div>
 
                     <div class="form-group">
                         <label>Pengarang</label>
-                        <input class="form-control" name="pengarang" required maxlength="200"/>
+                        <input class="form-control" name="pengarang" required maxlength="200" />
                     </div>
 
                     <div class="form-group">
                         <label>Penerbit</label>
-                        <input class="form-control" name="penerbit" required maxlength="200"/>
+                        <input class="form-control" name="penerbit" required maxlength="200" />
                     </div>
 
                     <div class="form-group">
                         <label>Tahun Terbit</label>
-                        <select class="form-control" name="tahun" required>
-                            <?php
-                                $tahun = date("Y");
-                                for ($i = $tahun - 80; $i <= $tahun; $i++) { 
-                                    echo "<option value='$i'>$i</option>";
-                                }
-                            ?>
-                        </select>
+                        <input class="form-control" name="tahun" required type="number" max="<?= date("Y"); ?>" />
                     </div>
 
                     <div class="form-group">
                         <label>ISBN</label>
-                        <input class="form-control" name="isbn" required maxlength="50" pattern="[0-9]{1,50}"/>
+                        <input class="form-control" name="isbn" required maxlength="50" pattern="[0-9]{1,50}" />
                     </div>
 
                     <div class="form-group">
                         <label>Jumlah Buku</label>
-                        <input class="form-control" type="number" name="jumlah" required min="1" max="50"/>
+                        <input class="form-control" type="number" name="jumlah" required min="1" max="50" />
                     </div>
 
                     <div class="form-group">
@@ -56,7 +49,7 @@
 
                     <div class="form-group">
                         <label>Tanggal Input</label>
-                        <input class="form-control" name="tanggal" type="date" required/>
+                        <input class="form-control" name="tanggal" type="date" required />
                     </div>
 
                     <div>
@@ -98,4 +91,3 @@ if (isset($_POST['simpan'])) {
     }
 }
 ?>
-

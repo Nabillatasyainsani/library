@@ -55,7 +55,9 @@ if ($is_admin) {
                                 <th>Tanggal Kembali</th>
                                 <th>Terlambat</th>
                                 <th>Status</th>
-                                <th>Aksi</th>
+                                <?php if ($isAdmin) { ?>
+                                    <th>Aksi</th>
+                                <?php } ?>
                             </tr>
                         </thead>
                         <tbody>
@@ -90,12 +92,12 @@ if ($is_admin) {
                                         ?>
                                     </td>
                                     <td><?php echo $data['status']; ?></td>
-                                    <td>
-                                        <?php if ($isAdmin) { ?>
+                                    <?php if ($isAdmin) { ?>
+                                        <td>
                                             <a href="?page=transaksi&aksi=kembali&id_transaksi=<?= $data['id']; ?>&id_buku=<?= $data['id_buku']; ?>" class="btn btn-info">Kembali</a>
                                             <a href="?page=transaksi&aksi=perpanjang&id=<?= $data['id']; ?>&judul=<?= $data['judul']; ?>&lambat=<?= $lambat; ?>&tgl_kembali=<?= $data['tgl_kembali']; ?>" class="btn btn-danger">Perpanjang</a>
-                                        <?php } ?>
-                                    </td>
+                                        </td>
+                                    <?php } ?>
                                 </tr>
                             <?php } ?>
                         </tbody>

@@ -74,13 +74,13 @@ if (isset($_POST['simpan'])) {
         try {
             $sql_transaksi = $koneksi->query("INSERT INTO tb_transaksi (id_user, id_buku, tgl_pinjam, tgl_kembali, status)
                                           VALUES ('$id_anggota', '$id_buku', STR_TO_DATE('$tgl_pinjam', '%Y-%m-%d'), STR_TO_DATE('$tgl_kembali', '%Y-%m-%d'), 'Dipinjam')");
-        if ($sql_transaksi) {
-            // Kurangi jumlah buku
-            $koneksi->query("UPDATE tb_buku SET jumlah_buku = jumlah_buku - 1 WHERE id = '$id_buku'");
-            echo "<script>alert('Transaksi berhasil disimpan!'); window.location.href='?page=transaksi';</script>";
-        } else {
-            echo "<script>alert('Transaksi gagal disimpan!');</script>";
-        }
+            if ($sql_transaksi) {
+                // Kurangi jumlah buku
+                $koneksi->query("UPDATE tb_buku SET jumlah_buku = jumlah_buku - 1 WHERE id = '$id_buku'");
+                echo "<script>alert('Transaksi berhasil disimpan!'); window.location.href='?page=transaksi';</script>";
+            } else {
+                echo "<script>alert('Transaksi gagal disimpan!');</script>";
+            }
         } catch (\Throwable $th) {
             echo "<script>alert('Transaksi gagal disimpan!');</script>";
         }

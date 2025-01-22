@@ -4,8 +4,8 @@ session_start();
 error_reporting(0); // Mematikan error report untuk mencegah error tidak penting.
 
 include "function.php";
-
-$koneksi = new mysqli("localhost", "root", "", "db_perpustakaan");
+require_once('config/database.php');
+$koneksi = Database::getInstance()->getConnection();
 
 // Pastikan hanya admin atau user yang bisa mengakses halaman ini
 if (isset($_SESSION['admin']) || isset($_SESSION['user'])) {

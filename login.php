@@ -2,8 +2,8 @@
 ob_start();
 session_start();
 
-// Create a database connection
-$koneksi = new mysqli("localhost", "root", "", "db_perpustakaan");
+require_once('config/database.php');
+$koneksi = Database::getInstance()->getConnection();
 
 // Check if the user is already logged in, redirect to the dashboard
 if (isset($_SESSION['admin']) || isset($_SESSION['user'])) {
@@ -40,6 +40,7 @@ if (isset($_POST['login'])) {
 
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -49,6 +50,7 @@ if (isset($_POST['login'])) {
     <link href="assets/css/font-awesome.css" rel="stylesheet" />
     <link href="assets/css/custom.css" rel="stylesheet" />
 </head>
+
 <body>
     <div class="container">
         <div class="row text-center">
@@ -88,4 +90,5 @@ if (isset($_POST['login'])) {
     <script src="assets/js/jquery.metisMenu.js"></script>
     <script src="assets/js/custom.js"></script>
 </body>
+
 </html>

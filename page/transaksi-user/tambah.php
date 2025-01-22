@@ -11,10 +11,10 @@
                         <select class="form-control" name="id_buku" required>
                             <option value="">-- Pilih Buku --</option>
                             <?php
-                                $sql_buku = $koneksi->query("SELECT * FROM tb_buku WHERE jumlah_buku > 0");
-                                while ($buku = $sql_buku->fetch_assoc()) {
-                                    echo "<option value='{$buku['id']}'>{$buku['judul']}</option>";
-                                }
+                            $sql_buku = $koneksi->query("SELECT * FROM tb_buku WHERE jumlah_buku > 0");
+                            while ($buku = $sql_buku->fetch_assoc()) {
+                                echo "<option value='{$buku['id']}'>{$buku['judul']}</option>";
+                            }
                             ?>
                         </select>
                     </div>
@@ -24,10 +24,10 @@
                         <select class="form-control" name="id_anggota" required>
                             <option value="">-- Pilih Anggota --</option>
                             <?php
-                                $sql_anggota = $koneksi->query("SELECT * FROM tb_anggota");
-                                while ($anggota = $sql_anggota->fetch_assoc()) {
-                                    echo "<option value='{$anggota['id']}'>{$anggota['nisn']} - {$anggota['nama']}</option>";
-                                }
+                            $sql_anggota = $koneksi->query("SELECT * FROM tb_anggota");
+                            while ($anggota = $sql_anggota->fetch_assoc()) {
+                                echo "<option value='{$anggota['id']}'>{$anggota['nisn']} - {$anggota['nama']}</option>";
+                            }
                             ?>
                         </select>
                     </div>

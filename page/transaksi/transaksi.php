@@ -1,6 +1,5 @@
 <?php
 session_start();
-$koneksi = new mysqli("localhost", "root", "", "db_perpustakaan");
 
 // Check if the user is logged in and the session exists
 if (!isset($_SESSION['user']) && !isset($_SESSION['admin'])) {
@@ -12,7 +11,6 @@ $is_admin = isset($_SESSION['admin']);
 $id_user = isset($_SESSION['user']) ? $_SESSION['user'] : $_SESSION['admin'];
 $user = $koneksi->query("SELECT * FROM tb_user WHERE id='$id_user'")->fetch_assoc();
 $id_anggota = $user['id_anggota'];
-
 
 $no = 1;
 
@@ -106,7 +104,7 @@ if ($is_admin) {
 
                 <?php if ($isAdmin) { ?>
                     <a href="?page=transaksi&aksi=tambah" class="btn btn-primary" style="margin-top: 8px;">Tambah Data</a>
-                    <a href="./laporan/laporan_transaksi_exel.php" target="blank" class="btn btn-default" style="margin-top: 8px;"><i class="fa fa-print"></i> ExportToExcel</a>
+                    <a href="./laporan/laporan_transaksi_exel.php?id_user=<?= $id_user ?>&id_admin=<?= $_SESSION['admin'] ?>" target="blank" class="btn btn-default" style="margin-top: 8px;"><i class="fa fa-print"></i> ExportToExcel</a>
                 <?php } ?>
 
 

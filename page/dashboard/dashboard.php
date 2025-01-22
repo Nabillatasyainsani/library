@@ -44,17 +44,17 @@ if ($level === 'admin') {
 <link rel="stylesheet" href="assets/css/font-awesome.min.css" />
 <div class="row">
     <?php if ($level === 'admin'): ?>
-    <div class="col-md-6">
-        <div class="panel panel-primary">
-            <div class="panel-heading" style="height: 100px;">
-                <i class="fa fa-user fa-5x pull-left" style="font-size: 5em;width: 30%;"></i>
-                <div style="margin-left: 30%;">Jumlah Anggota</div>
-            </div>
-            <div class="panel-body">
-                <h1><?php echo $jml_anggota; ?></h1>
+        <div class="col-md-6">
+            <div class="panel panel-primary">
+                <div class="panel-heading" style="height: 100px;">
+                    <i class="fa fa-user fa-5x pull-left" style="font-size: 5em;width: 30%;"></i>
+                    <div style="margin-left: 30%;">Jumlah Anggota</div>
+                </div>
+                <div class="panel-body">
+                    <h1><?php echo $jml_anggota; ?></h1>
+                </div>
             </div>
         </div>
-    </div>
     <?php endif; ?>
 
     <div class="col-md-6">
@@ -82,16 +82,16 @@ if ($level === 'admin') {
     </div>
 
     <?php if ($level === 'admin'): ?>
-    <div class="col-md-6">
-        <div class="panel panel-danger">
-            <div class="panel-heading" style="height: 100px;">
-                <i class="fa fa-users fa-5x pull-left" style="font-size: 5em;width: 30%;"></i>
-                <div style="margin-left: 30%;">Jumlah Pengguna</div>
-            </div>
-            <div class="panel-body">
-                <h1><?php echo $jml_user; ?></h1>
+        <div class="col-md-6">
+            <div class="panel panel-danger">
+                <div class="panel-heading" style="height: 100px;">
+                    <i class="fa fa-users fa-5x pull-left" style="font-size: 5em;width: 30%;"></i>
+                    <div style="margin-left: 30%;">Jumlah Pengguna</div>
+                </div>
+                <div class="panel-body">
+                    <h1><?php echo $jml_user; ?></h1>
+                </div>
             </div>
         </div>
-    </div>
     <?php endif; ?>
 </div>

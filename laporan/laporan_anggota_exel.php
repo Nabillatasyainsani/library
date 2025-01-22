@@ -1,7 +1,8 @@
 <?php
 
 // Koneksi ke database
-$koneksi = new mysqli("localhost", "root", "", "db_perpustakaan");
+require_once('../config/database.php');
+$koneksi = Database::getInstance()->getConnection();
 
 // Periksa koneksi
 if ($koneksi->connect_error) {
@@ -19,9 +20,11 @@ header("Content-Type: application/vnd.ms-excel");
 
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Laporan Anggota</title>
 </head>
+
 <body>
     <h2>Laporan Anggota</h2>
 
@@ -45,17 +48,18 @@ header("Content-Type: application/vnd.ms-excel");
                 // Tentukan jenis kelamin
                 $jk = ($data['jk'] == "L") ? "Laki-laki" : "Perempuan";
             ?>
-            <tr>
-                <td><?php echo $no++; ?></td>
-                <td><?php echo $data['nisn']; ?></td>
-                <td><?php echo $data['nama']; ?></td>
-                <td><?php echo $data['tempat_lahir']; ?></td>
-                <td><?php echo $data['tgl_lahir']; ?></td>
-                <td><?php echo $jk; ?></td>
-                <td><?php echo $data['kelas']; ?></td>
-            </tr>
+                <tr>
+                    <td><?php echo $no++; ?></td>
+                    <td><?php echo $data['nisn']; ?></td>
+                    <td><?php echo $data['nama']; ?></td>
+                    <td><?php echo $data['tempat_lahir']; ?></td>
+                    <td><?php echo $data['tgl_lahir']; ?></td>
+                    <td><?php echo $jk; ?></td>
+                    <td><?php echo $data['kelas']; ?></td>
+                </tr>
             <?php } ?>
         </tbody>
     </table>
 </body>
+
 </html>

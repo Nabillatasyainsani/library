@@ -1,16 +1,8 @@
 <?php
 session_start();
 
-// Koneksi ke database
-$host = 'localhost';
-$user = 'root';
-$password = '';
-$dbname = 'db_perpustakaan';
-$conn = new mysqli($host, $user, $password, $dbname);
-
-if ($conn->connect_error) {
-    die("Koneksi gagal: " . $conn->connect_error);
-}
+require_once('config/database.php');
+$koneksi = Database::getInstance()->getConnection();
 
 // Proses Registrasi
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -18,8 +10,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = password_hash($_POST['password'], PASSWORD_DEFAULT); // Enkripsi password
     $nama = $_POST['nama'];
     $level = $_POST['level'];
-
-
 
     // Menyimpan data ke database
     $sql = "INSERT INTO tb_user (username, password, nama, level) VALUES ('$username', '$password', '$nama', '$level')";
@@ -37,6 +27,7 @@ $conn->close();
 
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -50,9 +41,11 @@ $conn->close();
             height: 100vh;
             background-color: #f8f9fa;
         }
+
         .card {
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
+
         .card-header {
             background-color: #007bff;
             color: #fff;
@@ -60,6 +53,7 @@ $conn->close();
         }
     </style>
 </head>
+
 <body>
     <div class="card">
         <div class="card-header text-center">Registrasi Akun</div>
@@ -83,12 +77,15 @@ $conn->close();
                         <option value="user">User</option>
                     </select>
                 </div>
-               
+
                 <button type="submit" class="btn btn-primary btn-block">Daftar</button>
             </form>
-            <?php if (isset($_SESSION['message'])) { echo "<p class='text-center mt-3'>" . $_SESSION['message'] . "</p>"; unset($_SESSION['message']); } ?>
+            <?php if (isset($_SESSION['message'])) {
+                echo "<p class='text-center mt-3'>" . $_SESSION['message'] . "</p>";
+                unset($_SESSION['message']);
+            } ?>
         </div>
     </div>
 </body>
-</html>
 
+</html>
